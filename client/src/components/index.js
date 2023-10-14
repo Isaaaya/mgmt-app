@@ -1,3 +1,4 @@
 import Navbar from './Navbar';
+import ClientRow from './ClientRow';
 
-export { Navbar }
+export { Navbar, ClientRow }
