@@ -19,7 +19,7 @@ const ClientRow = ({ id, name, email, phone }) => {
       <td>{phone}</td>
       <td className="pl-[50px]">
         <button
-          className="flex justify-center items-center bg-rose-500 text-white h-[40px] w-[40px] rounded-md"
+          className="flex justify-center items-center bg-pink-500 text-white h-[40px] w-[40px] rounded-md"
           onClick={deleteClient}
         >
           {!loading ? (
