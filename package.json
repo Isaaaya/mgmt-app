@@ -1,0 +1,25 @@
+{
+  "name": "mgmt-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "npm run dev --prefix server",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Isaaaya/mgmt-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Isaaaya/mgmt-app/issues"
+  },
+  "homepage": "https://github.com/Isaaaya/mgmt-app#readme",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
+}
