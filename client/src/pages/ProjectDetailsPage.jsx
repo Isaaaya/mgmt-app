@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECT } from "../queries/projectQueries";
 import { TailSpin } from "react-loader-spinner";
-import { ClientInfo } from "../components/index";
+import { ClientInfo, DeleteProjectButton } from "../components/index";
 
 const ProjectDetailsPage = () => {
   const { projectId } = useParams();
@@ -30,10 +30,12 @@ const ProjectDetailsPage = () => {
   if (error) return <p>Something went wrong...</p>;
 
   return (
-    <div className="border w-[60%] mx-auto p-[60px] mt-[60px] shadow-md rounded-md">
+    <div className="border w-[60%] mx-auto py-[60px] px-[40px] my-[60px] shadow-md rounded-md">
       <Link to="/projects">
         <div className="flex justify-end">
-          <button className="bg-gray-100 px-6 py-1 rounded-md">Back</button>
+          <button className="bg-gray-100 px-6 py-1 rounded-md mb-[20px]">
+            Back
+          </button>
         </div>
       </Link>
       <div className="flex flex-col gap-[40px]">
@@ -47,6 +49,9 @@ const ProjectDetailsPage = () => {
         </div>
       </div>
       <ClientInfo client={data.project.client} />
+      <div className="flex justify-end mt-[30px]">
+        <DeleteProjectButton projectId={data.project.id} />
+      </div>
     </div>
   );
 };

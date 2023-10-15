@@ -50,27 +50,25 @@ const AddProjectModal = ({ showModal, setShowModal }) => {
     setShowModal(false);
   };
 
-  if (loading)
-    return (
-      <div className="mt-[200px] flex justify-center items-center">
-        <TailSpin
-          height="20"
-          width="20"
-          color="black"
-          ariaLabel="tail-spin-loading"
-          radius="1"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
-      </div>
-    );
-
   if (error) return <p>Something went wrong...</p>;
-  else
-    return (
-      <>
-        {showModal ? (
+
+  return (
+    <>
+      {showModal ? (
+        loading ? (
+          <div className="mt-[200px] flex justify-center items-center">
+            <TailSpin
+              height="20"
+              width="20"
+              color="black"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
+        ) : (
           <>
             <div className="justify-center items-center w-[100%] flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none w-[50%]">
@@ -140,9 +138,10 @@ const AddProjectModal = ({ showModal, setShowModal }) => {
             </div>
             <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
           </>
-        ) : null}
-      </>
-    );
+        )
+      ) : null}
+    </>
+  );
 };
 
 export default AddProjectModal;
