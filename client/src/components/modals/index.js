@@ -1,3 +1,4 @@
 import AddClientModal from './AddClientModal'
+import AddProjectModal from './AddProjectModal'
 
-export { AddClientModal }
+export { AddClientModal, AddProjectModal }
