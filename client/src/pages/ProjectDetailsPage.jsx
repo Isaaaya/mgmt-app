@@ -1,11 +1,13 @@
-import React from "react";
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECT } from "../queries/projectQueries";
 import { TailSpin } from "react-loader-spinner";
 import { ClientInfo, DeleteProjectButton } from "../components/index";
+import { EditProjectModal } from "../components/modals/index";
 
 const ProjectDetailsPage = () => {
+  const [showModal, setShowModal] = useState(false);
   const { projectId } = useParams();
   const { loading, error, data } = useQuery(GET_PROJECT, {
     variables: { id: projectId },
@@ -49,9 +51,20 @@ const ProjectDetailsPage = () => {
         </div>
       </div>
       <ClientInfo client={data.project.client} />
-      <div className="flex justify-end mt-[30px]">
+      <div className="flex items-center justify-between mt-[30px]">
+        <button
+          className="bg-pink-500 text-white font-bold uppercase text-sm px-5 py-2 rounded-md"
+          onClick={() => setShowModal(true)}
+        >
+          Edit project
+        </button>
         <DeleteProjectButton projectId={data.project.id} />
       </div>
+      <EditProjectModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        project={data.project}
+      />
     </div>
   );
 };
