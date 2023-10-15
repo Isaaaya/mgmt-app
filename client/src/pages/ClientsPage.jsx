@@ -3,13 +3,30 @@ import { useQuery } from "@apollo/client";
 import { GET_CLIENTS } from "../queries/clientQueries";
 import { ClientRow } from "../components/index";
 import { AddClientModal } from "../components/modals/index";
+import { TailSpin } from "react-loader-spinner";
 
 const ClientsPage = () => {
   const [showModal, setShowModal] = useState(false);
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="mt-[200px] flex justify-center items-center">
+        <TailSpin
+          height="20"
+          width="20"
+          color="black"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    );
+
   if (error) return <p>Something went wrong...</p>;
+
   return (
     <div className="max-md:w-[90%] w-[70%] mx-auto">
       <button

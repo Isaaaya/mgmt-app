@@ -3,7 +3,6 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useMutation } from "@apollo/client";
 import { GET_CLIENTS } from "../queries/clientQueries";
 import { DELETE_CLIENT } from "../mutations/clientMutations";
-
 import { TailSpin } from "react-loader-spinner";
 
 const ClientRow = ({ id, name, email, phone }) => {

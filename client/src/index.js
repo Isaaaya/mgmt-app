@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/index';
-import { ClientsPage } from './pages/index';
+import { ClientsPage, ProjectsPage, NotFoundPage, ProjectDetailsPage } from './pages/index';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
@@ -21,6 +21,9 @@ root.render(
         <Routes>
           <Route path='/' element={<App />} />
           <Route path='/clients' element={<ClientsPage />} />
+          <Route path='/projects' element={<ProjectsPage />} />
+          <Route path='/projects/:projectId' element={<ProjectDetailsPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Router>
     </ApolloProvider>
